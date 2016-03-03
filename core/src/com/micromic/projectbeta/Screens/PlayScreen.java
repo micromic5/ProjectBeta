@@ -14,21 +14,22 @@ import com.badlogic.gdx.utils.viewport.FitViewport;
 import com.badlogic.gdx.utils.viewport.Viewport;
 import com.micromic.projectbeta.ProjectBeta;
 
+
 /**
  *
  * @author Mike
  */
 public class PlayScreen implements Screen {    
     private ProjectBeta game;
-    Texture texture;
     private OrthographicCamera gamecam;
     private Viewport gamePort;
+    private Hud hud;
         
     public PlayScreen(ProjectBeta game){
         this.game = game;
-        texture = new Texture("badlogic.jpg");
         gamecam = new OrthographicCamera();
-        gamePort = new FitViewport(800,480,gamecam);
+        gamePort = new FitViewport(ProjectBeta.V_WIDTH,ProjectBeta.V_Height,gamecam);
+        hud = new Hud(game.batch);
     }
     @Override
     public void show() {
@@ -38,11 +39,9 @@ public class PlayScreen implements Screen {
     @Override
     public void render(float f) {
         Gdx.gl.glClearColor(1,0,0,1);
-        Gdx.gl.glClear(GL20.GL_COLOR_BUFFER_BIT);
-        game.batch.setProjectionMatrix(gamecam.combined);
-        game.batch.begin();
-        game.batch.draw(texture,0,0);
-        game.batch.end();
+        Gdx.gl.glClear(GL20.GL_COLOR_BUFFER_BIT);        
+        game.batch.setProjectionMatrix(hud.stage.getCamera().combined);
+        hud.stage.draw();
     }
 
     @Override

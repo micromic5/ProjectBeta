@@ -9,6 +9,8 @@ import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.micromic.projectbeta.Screens.PlayScreen;
 
 public class ProjectBeta extends Game {
+        public static final int V_WIDTH = 400;
+        public static final int V_Height = 200;
 	public SpriteBatch batch;	
 	
 	@Override
