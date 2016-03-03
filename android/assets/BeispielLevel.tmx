@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<map version="1.0" orientation="orthogonal" width="20" height="20" tilewidth="16" tileheight="16">
+ <tileset firstgid="1" name="town_tiles" tilewidth="16" tileheight="16">
+  <image source="town_tiles.png" trans="000000" width="160" height="48"/>
+ </tileset>
+ <tileset firstgid="31" name="town_tiles" tilewidth="16" tileheight="16">
+  <image source="town_tiles.png" trans="000000" width="160" height="48"/>
+ </tileset>
+ <layer name="Tile Layer 1" width="20" height="20">
+  <data encoding="base64" compression="zlib">
+   eJzjZmBg4B7FQwKzEZBnJ8M8RiTMjMYn1Tx0zEVl/1PLPE4o5kBiU8Nd6PSoecRhWDwg09RMN6OYdhgAFewQtQ==
+  </data>
+ </layer>
+ <layer name="Tile Layer 2 Transparentstuff" width="20" height="20">
+  <data encoding="base64" compression="zlib">
+   eJzdlMsKwjAQRceFRWyrJuKrPv7/M53ABG6HmaGpOy8ckibk9LaLEMXphQvzgec1qZ4rcxPe4m0Neu7Mg5mYJ/Na4UXPRoHepUHP1plPDb7O6KVpSfW1Jgk6g0FdPzCjoJOFRHN35BsCX3VkAM9Z3SlY9/rhfslZjZnseP10D+37937WOa9fJr8fZh/s4XuSAabcWzsguv90N6tjL92OCzpa3ax/XTwnGX/tV4LfG+ULlRgKhA==
+  </data>
+ </layer>
+</map>
