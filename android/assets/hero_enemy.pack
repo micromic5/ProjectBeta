@@ -1,0 +1,55 @@
+
+hero_enemy.png
+format: RGBA8888
+filter: Nearest,Nearest
+repeat: none
+enemyHit1
+  rotate: false
+  xy: 1, 1
+  size: 858, 1016
+  orig: 858, 1016
+  offset: 0, 0
+  index: -1
+Lonely
+  rotate: false
+  xy: 861, 889
+  size: 96, 128
+  orig: 96, 128
+  offset: 0, 0
+  index: -1
+
+hero_enemy2.png
+format: RGBA8888
+filter: Nearest,Nearest
+repeat: none
+enemyHit2
+  rotate: false
+  xy: 1, 1
+  size: 858, 1016
+  orig: 858, 1016
+  offset: 0, 0
+  index: -1
+
+hero_enemy3.png
+format: RGBA8888
+filter: Nearest,Nearest
+repeat: none
+enemyIdle1
+  rotate: false
+  xy: 1, 1
+  size: 827, 905
+  orig: 827, 905
+  offset: 0, 0
+  index: -1
+
+hero_enemy4.png
+format: RGBA8888
+filter: Nearest,Nearest
+repeat: none
+enemyIdle2
+  rotate: false
+  xy: 1, 1
+  size: 827, 905
+  orig: 827, 905
+  offset: 0, 0
+  index: -1

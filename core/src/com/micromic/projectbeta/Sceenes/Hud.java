@@ -3,8 +3,9 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package com.micromic.projectbeta.Screens;
+package com.micromic.projectbeta.Sceenes;
 
+import com.micromic.projectbeta.Screens.*;
 import com.badlogic.gdx.graphics.Color;
 import com.badlogic.gdx.graphics.OrthographicCamera;
 import com.badlogic.gdx.graphics.g2d.BitmapFont;
@@ -55,5 +56,9 @@ public class Hud {
         table.add(timeLabel).align(Align.left).expandX().padLeft(5);
         
         stage.addActor(table);
+    }
+    
+    public void dispose(){
+        stage.dispose();
     }
 }

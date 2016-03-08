@@ -11,6 +11,7 @@ import com.badlogic.gdx.Screen;
 import com.badlogic.gdx.graphics.GL20;
 import com.badlogic.gdx.graphics.OrthographicCamera;
 import com.badlogic.gdx.graphics.Texture;
+import com.badlogic.gdx.graphics.g2d.TextureAtlas;
 import com.badlogic.gdx.maps.MapObject;
 import com.badlogic.gdx.maps.objects.RectangleMapObject;
 import com.badlogic.gdx.maps.tiled.TiledMap;
@@ -27,7 +28,9 @@ import com.badlogic.gdx.physics.box2d.World;
 import com.badlogic.gdx.utils.viewport.FitViewport;
 import com.badlogic.gdx.utils.viewport.Viewport;
 import com.micromic.projectbeta.ProjectBeta;
+import com.micromic.projectbeta.Sceenes.Hud;
 import com.micromic.projectbeta.Sprites.Hero;
+import com.micromic.projectbeta.Tools.B2WorldCreator;
 
 
 /**
@@ -50,7 +53,10 @@ public class PlayScreen implements Screen {
     private Hero player;
     private float heroSpeedModificator;
     
+    private TextureAtlas atlas;
+    
     public PlayScreen(ProjectBeta game){
+        atlas = new TextureAtlas("hero_enemy.pack");
         this.game = game;
         gamecam = new OrthographicCamera();
         gamePort = new FitViewport(ProjectBeta.V_WIDTH / ProjectBeta.PPM,ProjectBeta.V_Height / ProjectBeta.PPM ,gamecam);
@@ -66,49 +72,9 @@ public class PlayScreen implements Screen {
         
         heroSpeedModificator = 1;
         
-        BodyDef bdef = new BodyDef();
-        PolygonShape shape = new PolygonShape();
-        FixtureDef fdef = new FixtureDef();
-        Body body;
+        new B2WorldCreator(world, map);
         
-        for(MapObject object : map.getLayers().get(3).getObjects().getByType(RectangleMapObject.class)){
-            Rectangle rect = ((RectangleMapObject) object).getRectangle();
-        
-            bdef.type = BodyDef.BodyType.StaticBody;
-            bdef.position.set((rect.getX() + rect.getWidth()/2)/ ProjectBeta.PPM, (rect.getY() + rect.getHeight()/2)/ ProjectBeta.PPM);
-            
-            body = world.createBody(bdef);
-            
-            shape.setAsBox((rect.getWidth()/2)/ ProjectBeta.PPM,(rect.getHeight()/2)/ ProjectBeta.PPM);
-            fdef.shape = shape;
-            body.createFixture(fdef);
-        }
-        for(MapObject object : map.getLayers().get(4).getObjects().getByType(RectangleMapObject.class)){
-            Rectangle rect = ((RectangleMapObject) object).getRectangle();
-        
-            bdef.type = BodyDef.BodyType.StaticBody;
-            bdef.position.set((rect.getX() + rect.getWidth()/2)/ ProjectBeta.PPM, (rect.getY() + rect.getHeight()/2)/ ProjectBeta.PPM);
-            
-            body = world.createBody(bdef);
-            
-            shape.setAsBox((rect.getWidth()/2)/ ProjectBeta.PPM,(rect.getHeight()/2)/ ProjectBeta.PPM);
-            fdef.shape = shape;
-            body.createFixture(fdef);
-        }
-        for(MapObject object : map.getLayers().get(5).getObjects().getByType(RectangleMapObject.class)){
-            Rectangle rect = ((RectangleMapObject) object).getRectangle();
-        
-            bdef.type = BodyDef.BodyType.StaticBody;
-            bdef.position.set((rect.getX() + rect.getWidth()/2)/ ProjectBeta.PPM, (rect.getY() + rect.getHeight()/2)/ ProjectBeta.PPM);
-            
-            body = world.createBody(bdef);
-            
-            shape.setAsBox((rect.getWidth()/2)/ ProjectBeta.PPM,(rect.getHeight()/2)/ ProjectBeta.PPM);
-            fdef.shape = shape;
-            body.createFixture(fdef);
-        }
-        
-        player = new Hero(world);
+        player = new Hero(world,this);
     }
     public void handleInput(float dt){
         //Speed Modification
@@ -150,6 +116,7 @@ public class PlayScreen implements Screen {
     }
     
     public void update(float dt){
+        player.update(dt);
         handleInput(dt);
         world.step(1/60f, 1, 2);
         gamecam.position.x = player.b2body.getPosition().x;
@@ -170,12 +137,21 @@ public class PlayScreen implements Screen {
         Gdx.gl.glClear(GL20.GL_COLOR_BUFFER_BIT);        
         renderer.render();
         //can create graphical bugs
-        b2dr.render(world,gamecam.combined);
+       // b2dr.render(world,gamecam.combined);
+        
+        game.batch.setProjectionMatrix(gamecam.combined);
+        game.batch.begin();
+        player.draw(game.batch);
+        game.batch.end();
         
         game.batch.setProjectionMatrix(hud.stage.getCamera().combined);
         hud.stage.draw();
     }
 
+    public TextureAtlas getAtlas(){
+        return atlas;
+    }
+    
     @Override
     public void resize(int width, int height) {
         gamePort.update(width,height);
@@ -198,7 +174,11 @@ public class PlayScreen implements Screen {
 
     @Override
     public void dispose() {
-    
+        map.dispose();
+        renderer.dispose();
+        world.dispose();
+        b2dr.dispose();
+        hud.dispose();
     }
     
 }
