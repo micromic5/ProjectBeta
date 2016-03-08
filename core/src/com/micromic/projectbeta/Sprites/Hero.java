@@ -35,7 +35,7 @@ public class Hero extends Sprite{
         
         FixtureDef fdef = new FixtureDef();
         PolygonShape shape = new PolygonShape();
-        shape.setAsBox(8/ ProjectBeta.PPM,8/ ProjectBeta.PPM);
+        shape.setAsBox(5/ ProjectBeta.PPM,8/ ProjectBeta.PPM);
         fdef.shape = shape;
         b2body.createFixture(fdef);
         

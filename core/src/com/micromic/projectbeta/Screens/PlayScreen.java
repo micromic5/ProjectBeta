@@ -48,6 +48,7 @@ public class PlayScreen implements Screen {
     private Box2DDebugRenderer b2dr;
     
     private Hero player;
+    private float heroSpeedModificator;
     
     public PlayScreen(ProjectBeta game){
         this.game = game;
@@ -62,6 +63,8 @@ public class PlayScreen implements Screen {
         
         world = new World(new Vector2(0,0),true);
         b2dr = new Box2DDebugRenderer();
+        
+        heroSpeedModificator = 1;
         
         BodyDef bdef = new BodyDef();
         PolygonShape shape = new PolygonShape();
@@ -108,19 +111,47 @@ public class PlayScreen implements Screen {
         player = new Hero(world);
     }
     public void handleInput(float dt){
-        if(Gdx.input.isKeyPressed(Input.Keys.W) && player.b2body.getLinearVelocity().y <=2)
-            player.b2body.applyLinearImpulse(new Vector2(0,0.1f),player.b2body.getWorldCenter(),true);
-        if(Gdx.input.isKeyPressed(Input.Keys.S) && player.b2body.getLinearVelocity().y >=-2)
+        //Speed Modification
+        if(Gdx.input.isKeyJustPressed(Input.Keys.CONTROL_LEFT)){
+            if(heroSpeedModificator == 1){
+                heroSpeedModificator= 0.1f;
+                if(Math.abs(player.b2body.getLinearVelocity().x)>0.2)
+                    player.b2body.setLinearVelocity(new Vector2(0,player.b2body.getLinearVelocity().y));
+                if(Math.abs(player.b2body.getLinearVelocity().y)>0.2)
+                    player.b2body.setLinearVelocity(new Vector2(player.b2body.getLinearVelocity().x,0));
+        }else
+                heroSpeedModificator =1;
+                        
+        }
+        //Hero Movement
+        if(Gdx.input.isKeyPressed(Input.Keys.W) && player.b2body.getLinearVelocity().y <=2*heroSpeedModificator)
+            player.b2body.applyLinearImpulse(new Vector2(0,0.1f),player.b2body.getWorldCenter(),true); 
+        if(Gdx.input.isKeyPressed(Input.Keys.S) && player.b2body.getLinearVelocity().y >=-2*heroSpeedModificator)
             player.b2body.applyLinearImpulse(new Vector2(0,-0.1f),player.b2body.getWorldCenter(), true);
-       if(Gdx.input.isKeyPressed(Input.Keys.A) && player.b2body.getLinearVelocity().x >=-2)
+        if(!(Gdx.input.isKeyPressed(Input.Keys.W)) && 
+                !(Gdx.input.isKeyPressed(Input.Keys.S)) && 
+                player.b2body.getLinearVelocity().y !=0){
+            player.b2body.setLinearVelocity(new Vector2(player.b2body.getLinearVelocity().x,0));
+        }
+        if(Gdx.input.isKeyPressed(Input.Keys.A) && player.b2body.getLinearVelocity().x >=-2*heroSpeedModificator)
             player.b2body.applyLinearImpulse(new Vector2(-0.1f,0),player.b2body.getWorldCenter(),true);
-        if(Gdx.input.isKeyPressed(Input.Keys.D) && player.b2body.getLinearVelocity().x <=2)
+        else if(!(Gdx.input.isKeyPressed(Input.Keys.A)) && 
+                !(Gdx.input.isKeyPressed(Input.Keys.D)) && 
+                player.b2body.getLinearVelocity().x !=0){
+            player.b2body.setLinearVelocity(new Vector2(0,player.b2body.getLinearVelocity().y));
+        }
+        if(Gdx.input.isKeyPressed(Input.Keys.D) && player.b2body.getLinearVelocity().x <=2*heroSpeedModificator)
             player.b2body.applyLinearImpulse(new Vector2(0.1f,0),player.b2body.getWorldCenter(), true);
+        else if(!(Gdx.input.isKeyPressed(Input.Keys.A)) && 
+                !(Gdx.input.isKeyPressed(Input.Keys.D)) && 
+                player.b2body.getLinearVelocity().x !=0){
+            player.b2body.setLinearVelocity(new Vector2(0,player.b2body.getLinearVelocity().y));
+        }
     }
     
     public void update(float dt){
         handleInput(dt);
-        world.step(1/60f,6,2);
+        world.step(1/60f, 1, 2);
         gamecam.position.x = player.b2body.getPosition().x;
         gamecam.position.y = player.b2body.getPosition().y;
         gamecam.update();
@@ -138,7 +169,7 @@ public class PlayScreen implements Screen {
         Gdx.gl.glClearColor(1,0,0,1);
         Gdx.gl.glClear(GL20.GL_COLOR_BUFFER_BIT);        
         renderer.render();
-        
+        //can create graphical bugs
         b2dr.render(world,gamecam.combined);
         
         game.batch.setProjectionMatrix(hud.stage.getCamera().combined);
