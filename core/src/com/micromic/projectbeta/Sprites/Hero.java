@@ -26,27 +26,27 @@ public class Hero extends Sprite{
     private TextureRegion heroStand;
     
     public Hero(World world, PlayScreen screen){
-        super(screen.getAtlas().findRegion("Lonely"));
-        heroStand = new TextureRegion(getTexture(),902,895,16,32);
-        setBounds(0,0,16/ProjectBeta.PPM,32/ProjectBeta.PPM);
+        super(screen.getAtlas().findRegion("WalkFront"));
+        heroStand = new TextureRegion(getTexture(),180,0,36,72);
+        setBounds(0,0,36/ProjectBeta.PPM,72/ProjectBeta.PPM);
         setRegion(heroStand);
         this.world = world;
         defineHero();
     }
     
     public void update(float dt){
-        setPosition(b2body.getPosition().x - getWidth() / 2, b2body.getPosition().y - getHeight() /2.5f);
+        setPosition(b2body.getPosition().x - getWidth() / 2, b2body.getPosition().y - getHeight() /2);
     }
     
     public void defineHero(){
         BodyDef bdef = new BodyDef();
-        bdef.position.set(16/ ProjectBeta.PPM,16/ ProjectBeta.PPM);
+        bdef.position.set(320/ ProjectBeta.PPM,30/ ProjectBeta.PPM);
         bdef.type = BodyDef.BodyType.DynamicBody;
         b2body = this.world.createBody(bdef);
         
         FixtureDef fdef = new FixtureDef();
         PolygonShape shape = new PolygonShape();
-        shape.setAsBox(6/ ProjectBeta.PPM,4/ ProjectBeta.PPM);
+        shape.setAsBox(18/ ProjectBeta.PPM,36/ ProjectBeta.PPM);
         fdef.shape = shape;
         b2body.createFixture(fdef);
         

@@ -56,7 +56,7 @@ public class PlayScreen implements Screen {
     private TextureAtlas atlas;
     
     public PlayScreen(ProjectBeta game){
-        atlas = new TextureAtlas("hero_enemy.pack");
+        atlas = new TextureAtlas("self_made/character/hero.atlas");
         this.game = game;
         gamecam = new OrthographicCamera();
         gamePort = new FitViewport(ProjectBeta.V_WIDTH / ProjectBeta.PPM,ProjectBeta.V_Height / ProjectBeta.PPM ,gamecam);
@@ -137,7 +137,7 @@ public class PlayScreen implements Screen {
         Gdx.gl.glClear(GL20.GL_COLOR_BUFFER_BIT);        
         renderer.render();
         //can create graphical bugs
-       // b2dr.render(world,gamecam.combined);
+        b2dr.render(world,gamecam.combined);
         
         game.batch.setProjectionMatrix(gamecam.combined);
         game.batch.begin();
