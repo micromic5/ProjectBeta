@@ -12,6 +12,7 @@ import com.badlogic.gdx.graphics.GL20;
 import com.badlogic.gdx.graphics.OrthographicCamera;
 import com.badlogic.gdx.graphics.Texture;
 import com.badlogic.gdx.graphics.g2d.TextureAtlas;
+import com.badlogic.gdx.maps.MapLayers;
 import com.badlogic.gdx.maps.MapObject;
 import com.badlogic.gdx.maps.objects.RectangleMapObject;
 import com.badlogic.gdx.maps.tiled.TiledMap;
@@ -45,8 +46,9 @@ public class PlayScreen implements Screen {
     
     private TmxMapLoader maploader;
     private TiledMap map;
-    private OrthogonalTiledMapRenderer renderer;
-    
+    private OrthogonalTiledMapRenderer backgroundRenderer;
+    private OrthogonalTiledMapRenderer foregroundRenderer;
+    private MapLayers layers;
     private World world;
     private Box2DDebugRenderer b2dr;
     
@@ -64,7 +66,6 @@ public class PlayScreen implements Screen {
         
         maploader = new TmxMapLoader();
         map = maploader.load("level1.tmx");
-        renderer = new OrthogonalTiledMapRenderer(map, 1/ ProjectBeta.PPM);
         gamecam.position.set(gamePort.getWorldWidth()/2,gamePort.getWorldHeight()/2,0);
         
         world = new World(new Vector2(0,0),true);
@@ -75,6 +76,16 @@ public class PlayScreen implements Screen {
         new B2WorldCreator(world, map);
         
         player = new Hero(world,this);
+        //Back and Foreground Layers
+        map.getLayers().remove(map.getLayers().get("graphics2"));
+        map.getLayers().remove(map.getLayers().get("graphics3"));
+        backgroundRenderer = new OrthogonalTiledMapRenderer(map, 1/ ProjectBeta.PPM);
+        map = maploader.load("level1.tmx");
+        map.getLayers().remove(map.getLayers().get("graphics"));
+        map.getLayers().remove(map.getLayers().get("doors"));
+        map.getLayers().remove(map.getLayers().get("vegetation"));
+        map.getLayers().remove(map.getLayers().get("background"));
+        foregroundRenderer = new OrthogonalTiledMapRenderer(map, 1/ ProjectBeta.PPM);
     }
     public void handleInput(float dt){
         //Speed Modification
@@ -122,7 +133,8 @@ public class PlayScreen implements Screen {
         gamecam.position.y = player.b2body.getPosition().y;
         gamecam.update();
         world.step(1/60f, 1, 2);       
-        renderer.setView(gamecam);
+        backgroundRenderer.setView(gamecam);
+        foregroundRenderer.setView(gamecam);        
     }
     
     @Override
@@ -135,15 +147,15 @@ public class PlayScreen implements Screen {
         update(delta);
         Gdx.gl.glClearColor(1,0,0,1);
         Gdx.gl.glClear(GL20.GL_COLOR_BUFFER_BIT);        
-        renderer.render();
-        //can create graphical bugs
-        b2dr.render(world,gamecam.combined);
+        backgroundRenderer.render();       
         
         game.batch.setProjectionMatrix(gamecam.combined);
         game.batch.begin();
         player.draw(game.batch);
         game.batch.end();
-        
+        foregroundRenderer.render();
+        //can create graphical bugs
+        b2dr.render(world,gamecam.combined);
         game.batch.setProjectionMatrix(hud.stage.getCamera().combined);
         hud.stage.draw();
     }
@@ -175,7 +187,8 @@ public class PlayScreen implements Screen {
     @Override
     public void dispose() {
         map.dispose();
-        renderer.dispose();
+        backgroundRenderer.dispose();
+        foregroundRenderer.dispose();
         world.dispose();
         b2dr.dispose();
         hud.dispose();
