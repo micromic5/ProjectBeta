@@ -58,7 +58,7 @@ public class PlayScreen implements Screen {
     private TextureAtlas atlas;
     
     public PlayScreen(ProjectBeta game){
-        atlas = new TextureAtlas("self_made/character/hero.atlas");
+        atlas = new TextureAtlas("self_made/character/character.pack");
         this.game = game;
         gamecam = new OrthographicCamera();
         gamePort = new FitViewport(ProjectBeta.V_WIDTH / ProjectBeta.PPM,ProjectBeta.V_Height / ProjectBeta.PPM ,gamecam);
