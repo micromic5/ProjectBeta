@@ -32,6 +32,7 @@ import com.micromic.projectbeta.ProjectBeta;
 import com.micromic.projectbeta.Sceenes.Hud;
 import com.micromic.projectbeta.Sprites.Hero;
 import com.micromic.projectbeta.Tools.B2WorldCreator;
+import com.micromic.projectbeta.Tools.WorldContactListener;
 
 
 /**
@@ -76,6 +77,8 @@ public class PlayScreen implements Screen {
         new B2WorldCreator(world, map);
         
         player = new Hero(world,this);
+        
+        world.setContactListener(new WorldContactListener());
         //Back and Foreground Layers
         map.getLayers().remove(map.getLayers().get("graphics2"));
         map.getLayers().remove(map.getLayers().get("graphics3"));

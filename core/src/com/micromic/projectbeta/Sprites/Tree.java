@@ -5,26 +5,17 @@
  */
 package com.micromic.projectbeta.Sprites;
 
-import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.maps.tiled.TiledMap;
 import com.badlogic.gdx.math.Rectangle;
-import com.badlogic.gdx.physics.box2d.BodyDef;
-import com.badlogic.gdx.physics.box2d.FixtureDef;
-import com.badlogic.gdx.physics.box2d.PolygonShape;
 import com.badlogic.gdx.physics.box2d.World;
-import com.micromic.projectbeta.ProjectBeta;
 
 /**
  *
  * @author mike
  */
-public class Door extends InteractiveTileObject{
-    public Door(World world, TiledMap map, Rectangle bounds){
+public class Tree extends InteractiveTileObject{
+     public Tree(World world, TiledMap map, Rectangle bounds){
         super(world,map,bounds);     
         fixture.setUserData(this);
-    }
-    
-    public void onTopHit(){
-        System.out.println("top_collision");
     }
 }

@@ -12,6 +12,7 @@ import com.badlogic.gdx.math.Vector2;
 import com.badlogic.gdx.physics.box2d.Body;
 import com.badlogic.gdx.physics.box2d.BodyDef;
 import com.badlogic.gdx.physics.box2d.CircleShape;
+import com.badlogic.gdx.physics.box2d.EdgeShape;
 import com.badlogic.gdx.physics.box2d.FixtureDef;
 import com.badlogic.gdx.physics.box2d.PolygonShape;
 import com.badlogic.gdx.physics.box2d.World;
@@ -125,5 +126,15 @@ public class Hero extends Sprite{
         fdef.shape = shape;
         b2body.createFixture(fdef);
         
+        shape.setAsBox(14/ProjectBeta.PPM,18/ProjectBeta.PPM,new Vector2(30 / ProjectBeta.PPM, -18 / ProjectBeta.PPM),0f);
+        fdef.shape = shape;
+        fdef.isSensor = true;
+        b2body.createFixture(fdef).setUserData("attack");
+        
+        EdgeShape eShape = new EdgeShape();
+        eShape.set(new Vector2(-18/ ProjectBeta.PPM,1/ ProjectBeta.PPM),new Vector2(18/ ProjectBeta.PPM,1/ ProjectBeta.PPM));
+        fdef.shape = eShape;
+        fdef.isSensor = true;
+        b2body.createFixture(fdef).setUserData("top");
     }
 }

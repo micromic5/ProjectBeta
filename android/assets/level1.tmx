@@ -5,22 +5,22 @@
  </tileset>
  <layer name="background" width="30" height="30">
   <data encoding="base64" compression="zlib">
-   eJztVrsSwzAMchL//zf3OvROR0GCNmMGltgRQk/vtdZ+8KDgDDDZugQY568+ptwV7/8PQMdb73XcaPMw/Ul87njxPtOpgHGutqZzty5YnFiNoL0TztN6rXHYYGev7xggP/pY77OaVPqYL25PqJgzsHP0dap51nduD3b5wXg7dZNq7WbW1MOqDlm8WB11GtidyWdl8xp4me7Pf3fN965nKi+b/areUQubU9gHzK5T32w+YG+qGan2WrJLurgprso57VfkZN8ZP8tvt88crd2uOYttFX+m4463SoIag+QNgbM7AcvLpI3Nxult4uj/5/3izLGUv5vxTv8rW3dpTnKaxAFr392BKi8vmr0K9g==
+   eJztlksSwzAIQ53E9z9zp4vOMOoTnzbLLNjEDgIhMHuttR97LNg5sMrXZYwwf41xih3t/f8hluHGexm2+jya8UxiznD1PuXpTHmOvqrzri6IJ9KI+jvlfKrXyMMWP3t9c6D4GmO8T5p0+VEs3Z5wnJPRucZaaZ76rtuDWX2U745uprnSeaxNZ35o3sQX6SjLge5Uc9b5vApc0uTnv7vme9YzEZdmv9O75kJzSvuA/Hb0TfNBe9PNSPeuTd6SjDeHFTGr91Ux6TvhU32z96yTa/bWnMG345/yuGNXmVjkYLJD6OyeGNWlyo1mY7WbdPL/Z3/pzLEpvqt1Z6dTf04zd+1vVU0nPKj2OzPdafDN0wuh4Qr3
   </data>
  </layer>
  <layer name="graphics" width="30" height="30">
   <data encoding="base64" compression="zlib">
-   eJztlEsPwiAQhLnUR4jFx4mop0b9///QJXWTcaRYqNRLJ9mUh+tnxwFjFi1a9A+tpTZS25m5B6mj1Glm7llqJXUt6HUTuDepvdSjoNdnfLaV2lHF1ng/pi6Da2nevNaaET1jfMWc4tjSHLmpniD01dFThTnFsaU5clM9Qeirp6cq5PRi+pzi2NIcuakelIPfwP9xyOnd9DnFsaU5clM96KuHMSuVzdhaO7Cn+x6Y+o4552hI1nz6ieqA6cy71zW5yjYvPr53bW6QvmcJs6FywHWRfbxTYme4lOuBq/nB70Zu7AyXcjvgan6U6c3wHZrr9TeftTQ7qbt7ithnzmstLvvMea3FZZ9Zc/mcOke/FPucqye4jxGW
+   eJztVMsOgzAMy6V7qBra47hxqrb9/x8uiCEZK32og+6CJYsmJXVTTEU2bNjwD+yVB+Wxse5FeVXeGuvelTtl31j3qTwr3yvrdMoT0crxPCLQswSeYvfNucKanCb6FMeeYtRN1ViwtNGnOPYUo26qJhT0OmDw6UNGn+LYU4y6qRrWDDLfy4TBpy8ZfYpjTzHqpmpyfU5IedPKdZG5mJ9rPG3BS9w/uH4wctaemLW6uOZSCKCbWjfnqRwcUWTeL89bd0pN3zldXtsZuRqwrnXOgd639rP0ObNG6u7+FbFzXlOXz5m92qpf/n6tdEv+oyVQem/E8AGoXxHN
   </data>
  </layer>
  <layer name="graphics_2" width="30" height="30">
   <data encoding="base64" compression="zlib">
-   eJztlEsKwDAIBXMD11l7/zuWQIVH6YuLEE2pA4KL4OSjaa0oiuJMJMnZE9zDqYFuc+idm3s35hDINcBrjt5ifMyf0dMD9rZCYhXsL7aft5jVeuas7mytkvBqebOBNVbnSEnunX1HX+OcRvKnOUVX5F3jXxx51/gXZ5DRV1/gAvosBr4=
+   eJztlDEOwCAIRbkBM3Pvf8dOJoR8rLVAHXgJwQFFvghR0zTNmbDxVTlF+SpE+Yp6Gawr6h05qvW1+f+Aqa6X9d8R8vuKHdsF/R2kuTiGQL3q5R4xEVo/1YDiZ3V8xXu/jPNt/1gExO6CdNZvubIvmsyzrc5Vc8HqPJsLmVzgPhmszo1o3s6NU7gBewEGPA==
   </data>
  </layer>
  <layer name="graphics_3" width="30" height="30">
   <data encoding="base64" compression="zlib">
-   eJzt0zEOACAIA0B+wMzM///oSkwHB6yG9EaXVlAzERERDj886xYgJwi5CXISdLmVvWPcGUFdujFmitSZMjvUmb7Yqxtnr7vJb5jph//CNG1/3RbDMQJZ
+   eJzt0TEKACAMBMH8wDr//6hYCCkipJAT4k6Z5lhiBgCAxijebvNkxwW7px1Fc0bV/KJvbar6orjZ/a9R59bObdsPjaib76kBkQ==
   </data>
  </layer>
  <objectgroup name="doors" width="30" height="30">
@@ -32,16 +32,6 @@
   <object x="504" y="324" width="36" height="72"/>
  </objectgroup>
  <objectgroup name="collision" width="30" height="30">
-  <object x="828" y="432" width="252" height="252"/>
-  <object x="1008" y="396" width="36" height="36"/>
-  <object x="864" y="684" width="180" height="72"/>
-  <object x="900" y="756" width="72" height="108"/>
-  <object x="972" y="756" width="72" height="36"/>
-  <object x="1008" y="792" width="36" height="72"/>
-  <object x="504" y="720" width="36" height="360"/>
-  <object x="648" y="792" width="144" height="216"/>
-  <object x="108" y="684" width="216" height="36"/>
-  <object x="612" y="720" width="36" height="360"/>
   <object x="108" y="468" width="216" height="72"/>
   <object x="360" y="468" width="108" height="72"/>
   <object x="576" y="468" width="216" height="72"/>
@@ -57,5 +47,59 @@
   <object x="468" y="324" width="36" height="72"/>
   <object x="540" y="324" width="36" height="72"/>
   <object x="458" y="560" height="1"/>
+ </objectgroup>
+ <objectgroup name="Tree" width="30" height="30">
+  <object x="828" y="648" width="36" height="36"/>
+  <object x="864" y="720" width="36" height="36"/>
+  <object x="864" y="684" width="36" height="36"/>
+  <object x="900" y="684" width="36" height="36"/>
+  <object x="900" y="648" width="36" height="36"/>
+  <object x="864" y="576" width="36" height="36"/>
+  <object x="828" y="540" width="36" height="36"/>
+  <object x="828" y="504" width="36" height="36"/>
+  <object x="864" y="504" width="36" height="36"/>
+  <object x="900" y="540" width="36" height="36"/>
+  <object x="936" y="504" width="36" height="36"/>
+  <object x="900" y="432" width="36" height="36"/>
+  <object x="936" y="396" width="36" height="36"/>
+  <object x="972" y="432" width="36" height="36"/>
+  <object x="1008" y="396" width="36" height="36"/>
+  <object x="1008" y="468" width="36" height="36"/>
+  <object x="972" y="540" width="36" height="36"/>
+  <object x="1008" y="540" width="36" height="36"/>
+  <object x="1044" y="540" width="36" height="36"/>
+  <object x="936" y="612" width="36" height="36"/>
+  <object x="972" y="612" width="36" height="36"/>
+  <object x="1008" y="648" width="36" height="36"/>
+  <object x="1044" y="612" width="36" height="36"/>
+  <object x="936" y="720" width="36" height="36"/>
+  <object x="972" y="720" width="36" height="36"/>
+  <object x="1008" y="720" width="36" height="36"/>
+  <object x="972" y="756" width="36" height="36"/>
+  <object x="1008" y="828" width="36" height="36"/>
+  <object x="936" y="828" width="36" height="36"/>
+  <object x="900" y="792" width="36" height="36"/>
+  <object x="108" y="684" width="36" height="36"/>
+  <object x="144" y="684" width="36" height="36"/>
+  <object x="180" y="684" width="36" height="36"/>
+  <object x="216" y="684" width="36" height="36"/>
+  <object x="252" y="684" width="36" height="36"/>
+  <object x="288" y="684" width="36" height="36"/>
+  <object x="504" y="720" width="36" height="36"/>
+  <object x="504" y="828" width="36" height="36"/>
+  <object x="504" y="936" width="36" height="36"/>
+  <object x="504" y="1044" width="36" height="36"/>
+  <object x="612" y="1044" width="36" height="36"/>
+  <object x="612" y="936" width="36" height="36"/>
+  <object x="648" y="936" width="36" height="36"/>
+  <object x="648" y="972" width="36" height="36"/>
+  <object x="684" y="936" width="36" height="36"/>
+  <object x="720" y="972" width="36" height="36"/>
+  <object x="756" y="900" width="36" height="36"/>
+  <object x="756" y="864" width="36" height="36"/>
+  <object x="684" y="828" width="36" height="36"/>
+  <object x="612" y="828" width="36" height="36"/>
+  <object x="720" y="792" width="36" height="36"/>
+  <object x="612" y="720" width="36" height="36"/>
  </objectgroup>
 </map>

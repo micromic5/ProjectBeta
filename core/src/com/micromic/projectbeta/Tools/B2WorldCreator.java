@@ -16,6 +16,7 @@ import com.badlogic.gdx.physics.box2d.PolygonShape;
 import com.badlogic.gdx.physics.box2d.World;
 import com.micromic.projectbeta.ProjectBeta;
 import com.micromic.projectbeta.Sprites.Door;
+import com.micromic.projectbeta.Sprites.Tree;
 
 /**
  *
@@ -27,22 +28,15 @@ public class B2WorldCreator {
         PolygonShape shape = new PolygonShape();
         FixtureDef fdef = new FixtureDef();
         Body body;
-        for(MapObject object : map.getLayers().get(3).getObjects().getByType(RectangleMapObject.class)){
-            Rectangle rect = ((RectangleMapObject) object).getRectangle();
-        
-            new Door(world,map,rect);
-        }
         for(MapObject object : map.getLayers().get(4).getObjects().getByType(RectangleMapObject.class)){
             Rectangle rect = ((RectangleMapObject) object).getRectangle();
-        
-            bdef.type = BodyDef.BodyType.StaticBody;
-            bdef.position.set((rect.getX() + rect.getWidth()/2)/ ProjectBeta.PPM, (rect.getY() + rect.getHeight()/2)/ ProjectBeta.PPM);
             
-            body = world.createBody(bdef);
+            new Door(world,map,rect);
+        }
+        for(MapObject object : map.getLayers().get(6).getObjects().getByType(RectangleMapObject.class)){
+            Rectangle rect = ((RectangleMapObject) object).getRectangle();
             
-            shape.setAsBox((rect.getWidth()/2)/ ProjectBeta.PPM,(rect.getHeight()/2)/ ProjectBeta.PPM);
-            fdef.shape = shape;
-            body.createFixture(fdef);
+            new Tree(world,map,rect);
         }
         for(MapObject object : map.getLayers().get(5).getObjects().getByType(RectangleMapObject.class)){
             Rectangle rect = ((RectangleMapObject) object).getRectangle();
@@ -56,6 +50,18 @@ public class B2WorldCreator {
             fdef.shape = shape;
             body.createFixture(fdef);
         }
+       /* for(MapObject object : map.getLayers().get(5).getObjects().getByType(RectangleMapObject.class)){
+            Rectangle rect = ((RectangleMapObject) object).getRectangle();
+        
+            bdef.type = BodyDef.BodyType.StaticBody;
+            bdef.position.set((rect.getX() + rect.getWidth()/2)/ ProjectBeta.PPM, (rect.getY() + rect.getHeight()/2)/ ProjectBeta.PPM);
+            
+            body = world.createBody(bdef);
+            
+            shape.setAsBox((rect.getWidth()/2)/ ProjectBeta.PPM,(rect.getHeight()/2)/ ProjectBeta.PPM);
+            fdef.shape = shape;
+            body.createFixture(fdef);
+        }*/
         
     }
 }
