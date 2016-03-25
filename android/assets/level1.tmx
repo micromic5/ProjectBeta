@@ -10,7 +10,7 @@
  </layer>
  <layer name="graphics" width="30" height="30">
   <data encoding="base64" compression="zlib">
-   eJztVMsOgzAMy6V7qBra47hxqrb9/x8uiCEZK32og+6CJYsmJXVTTEU2bNjwD+yVB+Wxse5FeVXeGuvelTtl31j3qTwr3yvrdMoT0crxPCLQswSeYvfNucKanCb6FMeeYtRN1ViwtNGnOPYUo26qJhT0OmDw6UNGn+LYU4y6qRrWDDLfy4TBpy8ZfYpjTzHqpmpyfU5IedPKdZG5mJ9rPG3BS9w/uH4wctaemLW6uOZSCKCbWjfnqRwcUWTeL89bd0pN3zldXtsZuRqwrnXOgd639rP0ObNG6u7+FbFzXlOXz5m92qpf/n6tdEv+oyVQem/E8AGoXxHN
+   eJztVNEKwjAM7EtRKQ7UR/UpqP//h0ZwcDvStNSuvuzgWJMuvaa7NYQNGzb8AzvlXnkYrHtSnpWXwbpX5U15H6z7UD6Vr5V1JuWRaOV4HiH0rEGiOH5zsbKmpIk+xXGiGHW9GguWNvoUx4li1PVqpKLXD9CnOE4Uo65Xw5oSlnuZgT7FcaIYdb2aUp8zPG9auSkzl/Nzi6ctpJD3D64vRs7aE7NVF9fsBQFdb92Sp0qIxBCW/fK8dae09F3S5bWjkWsB61rnLPS+tZ/e58wa3t39K3LnvKYunzN7dVS//P1G6db8Rz1Qe2/k8AZFrRH5
   </data>
  </layer>
  <layer name="graphics_2" width="30" height="30">
@@ -24,12 +24,12 @@
   </data>
  </layer>
  <objectgroup name="doors" width="30" height="30">
-  <object x="613" y="541" width="36" height="72"/>
   <object x="720" y="540" width="36" height="72"/>
   <object x="396" y="540" width="36" height="72"/>
   <object x="252" y="540" width="36" height="72"/>
   <object x="144" y="540" width="36" height="72"/>
   <object x="504" y="324" width="36" height="72"/>
+  <object x="612" y="540" width="36" height="72"/>
  </objectgroup>
  <objectgroup name="collision" width="30" height="30">
   <object x="108" y="468" width="216" height="72"/>

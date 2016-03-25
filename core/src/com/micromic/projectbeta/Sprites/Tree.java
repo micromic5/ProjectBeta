@@ -8,6 +8,7 @@ package com.micromic.projectbeta.Sprites;
 import com.badlogic.gdx.maps.tiled.TiledMap;
 import com.badlogic.gdx.math.Rectangle;
 import com.badlogic.gdx.physics.box2d.World;
+import com.micromic.projectbeta.ProjectBeta;
 
 /**
  *
@@ -17,5 +18,6 @@ public class Tree extends InteractiveTileObject{
      public Tree(World world, TiledMap map, Rectangle bounds){
         super(world,map,bounds);     
         fixture.setUserData(this);
+        setCategoryFilter(ProjectBeta.TREE_BIT);
     }
 }

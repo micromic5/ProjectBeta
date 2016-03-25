@@ -29,6 +29,7 @@ public class Hud {
     private Float worldTimer;
     private Integer hour;
     private Integer minute;
+    private float timeCount;
     Label timeLabel;
     Label levelLabel;
     Label worldLabel;
@@ -38,6 +39,7 @@ public class Hud {
         worldTimer = 25200f;
         hour = (int)Math.floor(worldTimer/3600);
         minute = (int)Math.floor((worldTimer%3600)/60);
+        timeCount=0;
         viewport = new FitViewport(ProjectBeta.V_WIDTH, ProjectBeta.V_Height, new OrthographicCamera());
         stage = new Stage(viewport,sb);       
         
@@ -56,6 +58,17 @@ public class Hud {
         table.add(timeLabel).align(Align.left).expandX().padLeft(5);
         
         stage.addActor(table);
+    }
+    
+    public void update(float dt){
+        timeCount += dt;
+        if(timeCount >=1){            
+            hour = (int)Math.floor(worldTimer/3600);
+            minute = (int)Math.floor((worldTimer%3600)/60);
+            timeLabel.setText((hour>9?Integer.toString(hour):"0"+Integer.toString(hour))+":"+(minute>9?Integer.toString(minute):"0"+Integer.toString(minute)));
+            timeCount = 0;
+            worldTimer=(worldTimer>=86400f?0:worldTimer+60);
+        }
     }
     
     public void dispose(){

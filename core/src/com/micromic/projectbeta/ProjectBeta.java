@@ -12,6 +12,14 @@ public class ProjectBeta extends Game {
         public static final int V_WIDTH = 400;
         public static final int V_Height = 200;
         public static final float PPM = 100;
+        
+        public static final short DEFAULT_BIT = 1;
+        public static final short HERO_BIT = 2;
+        public static final short DOOR_BIT = 4;
+        public static final short TREE_BIT = 8;
+        public static final short DESTROYED_BIT =16;
+        
+        
 	public SpriteBatch batch;	
 	
 	@Override

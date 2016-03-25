@@ -116,21 +116,24 @@ public class Hero extends Sprite{
     
     public void defineHero(){
         BodyDef bdef = new BodyDef();
-        bdef.position.set(320/ ProjectBeta.PPM,30/ ProjectBeta.PPM);
+        bdef.position.set(580/ ProjectBeta.PPM,30/ ProjectBeta.PPM);
         bdef.type = BodyDef.BodyType.DynamicBody;
         b2body = this.world.createBody(bdef);
         
         FixtureDef fdef = new FixtureDef();
         PolygonShape shape = new PolygonShape();
         shape.setAsBox(14/ ProjectBeta.PPM,18/ ProjectBeta.PPM,new Vector2(2 / ProjectBeta.PPM, -18 / ProjectBeta.PPM),0f);
+        fdef.filter.categoryBits = ProjectBeta.HERO_BIT;
+        fdef.filter.maskBits = ProjectBeta.DEFAULT_BIT | ProjectBeta.DOOR_BIT | ProjectBeta.TREE_BIT;
+        
         fdef.shape = shape;
         b2body.createFixture(fdef);
         
-        shape.setAsBox(14/ProjectBeta.PPM,18/ProjectBeta.PPM,new Vector2(30 / ProjectBeta.PPM, -18 / ProjectBeta.PPM),0f);
+       /* shape.setAsBox(14/ProjectBeta.PPM,18/ProjectBeta.PPM,new Vector2(30 / ProjectBeta.PPM, -18 / ProjectBeta.PPM),0f);
         fdef.shape = shape;
         fdef.isSensor = true;
         b2body.createFixture(fdef).setUserData("attack");
-        
+        */
         EdgeShape eShape = new EdgeShape();
         eShape.set(new Vector2(-18/ ProjectBeta.PPM,1/ ProjectBeta.PPM),new Vector2(18/ ProjectBeta.PPM,1/ ProjectBeta.PPM));
         fdef.shape = eShape;
