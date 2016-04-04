@@ -8,6 +8,8 @@ package com.micromic.projectbeta.Screens;
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.Input;
 import com.badlogic.gdx.Screen;
+import com.badlogic.gdx.assets.AssetManager;
+import com.badlogic.gdx.audio.Music;
 import com.badlogic.gdx.graphics.GL20;
 import com.badlogic.gdx.graphics.OrthographicCamera;
 import com.badlogic.gdx.graphics.Texture;
@@ -56,6 +58,8 @@ public class PlayScreen implements Screen {
     private Hero player;
     private float heroSpeedModificator;
     
+    private Music music;
+    
     private TextureAtlas atlas;
     
     public PlayScreen(ProjectBeta game){
@@ -89,6 +93,10 @@ public class PlayScreen implements Screen {
         map.getLayers().remove(map.getLayers().get("vegetation"));
         map.getLayers().remove(map.getLayers().get("background"));
         foregroundRenderer = new OrthogonalTiledMapRenderer(map, 1/ ProjectBeta.PPM);
+    
+        music = game.manager.get("audio/music/background-sound.wav",Music.class);
+        music.setLooping(true);
+        music.play();
     }
     public void handleInput(float dt){
         //Speed Modification
