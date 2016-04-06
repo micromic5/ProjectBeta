@@ -5,18 +5,17 @@
  */
 package com.micromic.projectbeta.Sprites;
 
-import com.badlogic.gdx.maps.tiled.TiledMap;
 import com.badlogic.gdx.math.Rectangle;
-import com.badlogic.gdx.physics.box2d.World;
 import com.micromic.projectbeta.ProjectBeta;
+import com.micromic.projectbeta.Screens.PlayScreen;
 
 /**
  *
  * @author mike
  */
 public class Tree extends InteractiveTileObject{
-     public Tree(World world, TiledMap map, Rectangle bounds){
-        super(world,map,bounds);     
+     public Tree(PlayScreen screen, Rectangle bounds){
+        super(screen,bounds);     
         fixture.setUserData(this);
         setCategoryFilter(ProjectBeta.TREE_BIT);
     }

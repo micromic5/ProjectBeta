@@ -1,0 +1,33 @@
+
+character.png
+format: RGBA8888
+filter: Nearest,Nearest
+repeat: none
+WalkRight
+  rotate: false
+  xy: 0, 0
+  size: 144, 72
+  orig: 144, 72
+  offset: 0, 0
+  index: -1
+WalkBackn
+  rotate: false
+  xy: 144, 0
+  size: 72, 72
+  orig: 72, 72
+  offset: 0, 0
+  index: -1
+WalkFront
+  rotate: false
+  xy: 216, 0
+  size: 72, 72
+  orig: 72, 72
+  offset: 0, 0
+  index: -1
+Stand
+  rotate: false
+  xy: 288, 0
+  size: 36, 72
+  orig: 36, 72
+  offset: 0, 0
+  index: -1

@@ -38,12 +38,12 @@ public class Hero extends Sprite{
     private boolean walkingRight;
     
     
-    public Hero(World world, PlayScreen screen){
-        super(screen.getAtlas().findRegion("WalkFront"));
+    public Hero(PlayScreen screen){
+        super(screen.getAtlasHero().findRegion("Stand"));
         heroStand = new TextureRegion(getTexture(),288,0,36,72);
         setBounds(0,0,36/ProjectBeta.PPM,72/ProjectBeta.PPM);
         setRegion(heroStand);
-        this.world = world;
+        this.world = screen.getWorld();
         currentState = State.STANDING;
         previousState = State.STANDING;
         stateTimer = 0;
@@ -124,7 +124,7 @@ public class Hero extends Sprite{
         PolygonShape shape = new PolygonShape();
         shape.setAsBox(14/ ProjectBeta.PPM,18/ ProjectBeta.PPM,new Vector2(2 / ProjectBeta.PPM, -18 / ProjectBeta.PPM),0f);
         fdef.filter.categoryBits = ProjectBeta.HERO_BIT;
-        fdef.filter.maskBits = ProjectBeta.DEFAULT_BIT | ProjectBeta.DOOR_BIT | ProjectBeta.TREE_BIT;
+        fdef.filter.maskBits = ProjectBeta.GROUND_BIT | ProjectBeta.DOOR_BIT | ProjectBeta.TREE_BIT | ProjectBeta.OBJECT_BIT | ProjectBeta.ENEMY_BIT;
         
         fdef.shape = shape;
         b2body.createFixture(fdef);

@@ -1,0 +1,47 @@
+
+blackknight.png
+format: RGBA8888
+filter: Nearest,Nearest
+repeat: none
+SlashRight
+  rotate: false
+  xy: 0, 144
+  size: 150, 72
+  orig: 150, 72
+  offset: 0, 0
+  index: -1
+WalkRightSword
+  rotate: false
+  xy: 0, 72
+  size: 150, 72
+  orig: 150, 72
+  offset: 0, 0
+  index: -1
+WalkBackSword
+  rotate: false
+  xy: 0, 0
+  size: 108, 72
+  orig: 108, 72
+  offset: 0, 0
+  index: -1
+WalkFrontSword
+  rotate: false
+  xy: 108, 0
+  size: 108, 72
+  orig: 108, 72
+  offset: 0, 0
+  index: -1
+Stand
+  rotate: false
+  xy: 150, 144
+  size: 36, 72
+  orig: 36, 72
+  offset: 0, 0
+  index: -1
+StandSword
+  rotate: false
+  xy: 150, 72
+  size: 36, 72
+  orig: 36, 72
+  offset: 0, 0
+  index: -1

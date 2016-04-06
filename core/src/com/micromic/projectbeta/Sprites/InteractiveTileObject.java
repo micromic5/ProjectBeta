@@ -19,6 +19,7 @@ import com.badlogic.gdx.physics.box2d.PolygonShape;
 import com.badlogic.gdx.physics.box2d.World;
 import com.badlogic.gdx.scenes.scene2d.ui.List;
 import com.micromic.projectbeta.ProjectBeta;
+import com.micromic.projectbeta.Screens.PlayScreen;
 import java.util.ArrayList;
 
 /**
@@ -34,9 +35,9 @@ public abstract class InteractiveTileObject {
     protected Fixture fixture;
     protected ArrayList<Cell> cells;
     
-    public InteractiveTileObject(World world, TiledMap map, Rectangle bounds){
-        this.world = world;
-        this.map = map;
+    public InteractiveTileObject(PlayScreen screen, Rectangle bounds){
+        this.world = screen.getWorld();
+        this.map = screen.getMap();
         this.bounds = bounds;
         
         BodyDef bdef = new BodyDef();

@@ -32,6 +32,7 @@ import com.badlogic.gdx.utils.viewport.FitViewport;
 import com.badlogic.gdx.utils.viewport.Viewport;
 import com.micromic.projectbeta.ProjectBeta;
 import com.micromic.projectbeta.Sceenes.Hud;
+import com.micromic.projectbeta.Sprites.Enemy.BlackKnight;
 import com.micromic.projectbeta.Sprites.Hero;
 import com.micromic.projectbeta.Tools.B2WorldCreator;
 import com.micromic.projectbeta.Tools.WorldContactListener;
@@ -60,10 +61,14 @@ public class PlayScreen implements Screen {
     
     private Music music;
     
-    private TextureAtlas atlas;
+    private TextureAtlas atlasHero;
+    private TextureAtlas atlasBKnight;
+    //xxxxx/
+    private BlackKnight blackKnight;
     
     public PlayScreen(ProjectBeta game){
-        atlas = new TextureAtlas("self_made/character/character.pack");
+        atlasHero = new TextureAtlas("self_made/character/character.pack");
+        atlasBKnight = new TextureAtlas("self_made/enemyes/black_knight/blackknight.pack");
         this.game = game;
         gamecam = new OrthographicCamera();
         gamePort = new FitViewport(ProjectBeta.V_WIDTH / ProjectBeta.PPM,ProjectBeta.V_Height / ProjectBeta.PPM ,gamecam);
@@ -78,9 +83,9 @@ public class PlayScreen implements Screen {
         
         heroSpeedModificator = 1;
         
-        new B2WorldCreator(world, map);
+        new B2WorldCreator(this);
         
-        player = new Hero(world,this);
+        player = new Hero(this);
         
         world.setContactListener(new WorldContactListener());
         //Back and Foreground Layers
@@ -97,6 +102,8 @@ public class PlayScreen implements Screen {
         music = game.manager.get("audio/music/background-sound.wav",Music.class);
         music.setLooping(true);
         music.play();
+        
+        blackKnight = new BlackKnight(this, .32f, .32f);
     }
     public void handleInput(float dt){
         //Speed Modification
@@ -139,6 +146,7 @@ public class PlayScreen implements Screen {
     
     public void update(float dt){
         player.update(dt);
+        blackKnight.update(dt);
         hud.update(dt);
         handleInput(dt);
         gamecam.position.x = player.b2body.getPosition().x;
@@ -164,6 +172,7 @@ public class PlayScreen implements Screen {
         game.batch.setProjectionMatrix(gamecam.combined);
         game.batch.begin();
         player.draw(game.batch);
+        blackKnight.draw(game.batch);
         game.batch.end();
         foregroundRenderer.render();
         //can create graphical bugs
@@ -172,8 +181,19 @@ public class PlayScreen implements Screen {
         hud.stage.draw();
     }
 
-    public TextureAtlas getAtlas(){
-        return atlas;
+    public TextureAtlas getAtlasHero(){
+        return atlasHero;
+    }
+    
+    public TextureAtlas getAtlasBKnight(){
+        return atlasBKnight;
+    }
+    
+    public TiledMap getMap(){
+        return map;
+    }
+    public World getWorld(){
+        return world;
     }
     
     @Override

@@ -11,6 +11,7 @@ import com.badlogic.gdx.maps.tiled.TiledMapTileSet;
 import com.badlogic.gdx.math.Rectangle;
 import com.badlogic.gdx.physics.box2d.World;
 import com.micromic.projectbeta.ProjectBeta;
+import com.micromic.projectbeta.Screens.PlayScreen;
 
 /**
  *
@@ -19,8 +20,8 @@ import com.micromic.projectbeta.ProjectBeta;
 public class Door extends InteractiveTileObject{
     private static TiledMapTileSet tileSet;
     private int textureNumber = 16;
-    public Door(World world, TiledMap map, Rectangle bounds){
-        super(world,map,bounds);    
+    public Door(PlayScreen screen, Rectangle bounds){
+        super(screen,bounds);    
         tileSet = map.getTileSets().getTileSet("Tildes");
         fixture.setUserData(this);
         setCategoryFilter(ProjectBeta.DOOR_BIT);
