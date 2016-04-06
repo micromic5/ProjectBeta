@@ -30,6 +30,7 @@ public class Hero extends Sprite{
     public State previousState;
     public World world;
     public Body b2body;
+    private TextureRegion heroRegion;
     private TextureRegion heroStand;
     private Animation heroWalkUp;
     private Animation heroWalkDown;
@@ -40,9 +41,11 @@ public class Hero extends Sprite{
     
     public Hero(PlayScreen screen){
         //Animations should be donne seperated
-        super(screen.getAtlasHero().findRegion("Stand"));
-        heroStand = new TextureRegion(getTexture(),288,0,36,72);
+       // super(screen.getAtlasHero().findRegion("Stand"));
+        //this.setRegion(screen.getAtlasHero().findRegion("WalkRight"));
+        heroRegion = new TextureRegion(screen.getAtlasHero().findRegion("Stand"),0,0,36,72);
         setBounds(0,0,36/ProjectBeta.PPM,72/ProjectBeta.PPM);
+        heroStand = heroRegion;
         setRegion(heroStand);
         this.world = screen.getWorld();
         currentState = State.STANDING;
@@ -51,18 +54,21 @@ public class Hero extends Sprite{
         walkingRight = true;
         
         Array<TextureRegion> frames = new Array<TextureRegion>();
-        for(int i = 4; i<6; i++)
-            frames.add(new TextureRegion(getTexture(), i * 36,0,36,72));
+        heroRegion = screen.getAtlasHero().findRegion("WalkBack");
+        for(int i = 0; i<2; i++)
+            frames.add(new TextureRegion(heroRegion, i * 36,0,36,72));
         heroWalkUp = new Animation(0.1f, frames);
         frames.clear();
         
-        for(int i = 1; i<4; i++)
-            frames.add(new TextureRegion(getTexture(), i * 36,0,36,72));
+        heroRegion = screen.getAtlasHero().findRegion("WalkRight");
+        for(int i = 0; i<4; i++)
+            frames.add(new TextureRegion(heroRegion, i * 36,0,36,72));
         heroWalk = new Animation(0.1f, frames);
         frames.clear();
         
-        for(int i = 6; i<8; i++)
-            frames.add(new TextureRegion(getTexture(), i * 36,0,36,72));
+        heroRegion= screen.getAtlasHero().findRegion("WalkFront");
+        for(int i = 0; i<2; i++)
+            frames.add(new TextureRegion(heroRegion, i * 36,0,36,72));
         heroWalkDown = new Animation(0.1f, frames);
         frames.clear();
         

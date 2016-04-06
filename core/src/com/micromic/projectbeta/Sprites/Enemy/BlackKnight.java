@@ -29,7 +29,7 @@ public class BlackKnight extends Enemy{
         super(screen, x, y);
         frames = new Array<TextureRegion>();
         for(int i = 0; i < 3; i++)
-            frames.add(new TextureRegion(screen.getAtlasBKnight().findRegion("WalkBackSword"),i*36,0,36,72));
+            frames.add(new TextureRegion(screen.getAtlasBKnight().findRegion("WalkFrontSword"),i*36,0,36,72));
         walkAnimation = new Animation(0.2f, frames);
         stateTime = 0;
         setBounds(getX(),getY(),36/ProjectBeta.PPM,72 /ProjectBeta.PPM);
