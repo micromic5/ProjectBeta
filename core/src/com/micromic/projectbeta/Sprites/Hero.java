@@ -39,6 +39,7 @@ public class Hero extends Sprite{
     
     
     public Hero(PlayScreen screen){
+        //Animations should be donne seperated
         super(screen.getAtlasHero().findRegion("Stand"));
         heroStand = new TextureRegion(getTexture(),288,0,36,72);
         setBounds(0,0,36/ProjectBeta.PPM,72/ProjectBeta.PPM);
