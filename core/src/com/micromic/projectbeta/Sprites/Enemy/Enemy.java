@@ -17,6 +17,9 @@ import com.micromic.projectbeta.Screens.PlayScreen;
 public abstract class Enemy extends Sprite{
     protected World world;
     protected PlayScreen screen;
+    protected int dmg;
+    protected int healt;
+    
     public Body b2body;
     public Enemy(PlayScreen screen, float x, float y){
         this.world = screen.getWorld();
@@ -25,5 +28,11 @@ public abstract class Enemy extends Sprite{
         defineEnemy();
     }
     
+    public int getHealth(){
+        return healt;
+    }
+    public abstract void kill();
+    public abstract int getDmg();
+    public abstract void gotHit();
     protected abstract void defineEnemy();
 }

@@ -103,7 +103,7 @@ public class PlayScreen implements Screen {
         music.setLooping(true);
         music.play();
         
-        blackKnight = new BlackKnight(this, .32f, .32f);
+        blackKnight = new BlackKnight(this, 4.7f, .5f);
     }
     public void handleInput(float dt){
         //Speed Modification
@@ -154,7 +154,7 @@ public class PlayScreen implements Screen {
         gamecam.update();
         world.step(1/60f, 1, 2);       
         backgroundRenderer.setView(gamecam);
-        foregroundRenderer.setView(gamecam);        
+        foregroundRenderer.setView(gamecam);
     }
     
     @Override

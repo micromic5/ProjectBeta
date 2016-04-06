@@ -37,12 +37,13 @@ public class Hero extends Sprite{
     private Animation heroWalk;
     private float stateTimer;
     private boolean walkingRight;
-    
+    private int health;
     
     public Hero(PlayScreen screen){
         //Animations should be donne seperated
        // super(screen.getAtlasHero().findRegion("Stand"));
         //this.setRegion(screen.getAtlasHero().findRegion("WalkRight"));
+        health = 100;
         heroRegion = new TextureRegion(screen.getAtlasHero().findRegion("Stand"),0,0,36,72);
         setBounds(0,0,36/ProjectBeta.PPM,72/ProjectBeta.PPM);
         heroStand = heroRegion;
@@ -73,6 +74,14 @@ public class Hero extends Sprite{
         frames.clear();
         
         defineHero();
+    }
+    
+    public void decreaseHealth(int x){
+        health -= x;
+    }
+    
+    public int getHealth(){
+        return health;
     }
     
     public State getState(){
@@ -131,10 +140,10 @@ public class Hero extends Sprite{
         PolygonShape shape = new PolygonShape();
         shape.setAsBox(14/ ProjectBeta.PPM,18/ ProjectBeta.PPM,new Vector2(2 / ProjectBeta.PPM, -18 / ProjectBeta.PPM),0f);
         fdef.filter.categoryBits = ProjectBeta.HERO_BIT;
-        fdef.filter.maskBits = ProjectBeta.GROUND_BIT | ProjectBeta.DOOR_BIT | ProjectBeta.TREE_BIT | ProjectBeta.OBJECT_BIT | ProjectBeta.ENEMY_BIT;
+        fdef.filter.maskBits = ProjectBeta.GROUND_BIT | ProjectBeta.DOOR_BIT | ProjectBeta.TREE_BIT | ProjectBeta.OBJECT_BIT | ProjectBeta.ENEMY_BIT | ProjectBeta.ATTACK_BIT;
         
         fdef.shape = shape;
-        b2body.createFixture(fdef);
+        b2body.createFixture(fdef).setUserData(this);
         
        /* shape.setAsBox(14/ProjectBeta.PPM,18/ProjectBeta.PPM,new Vector2(30 / ProjectBeta.PPM, -18 / ProjectBeta.PPM),0f);
         fdef.shape = shape;
